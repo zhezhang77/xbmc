@@ -354,7 +354,7 @@ bool CApplication::Create(const CAppParamParser &params)
 
   m_ServiceManager.reset(new CServiceManager());
 
-  if (!m_ServiceManager->InitStageOne())
+  if (!m_ServiceManager->InitStageOne(params))
   {
     return false;
   }
@@ -416,7 +416,7 @@ bool CApplication::Create(const CAppParamParser &params)
   CServiceBroker::RegisterAppPort(m_pAppPort);
 
   if (!m_ServiceManager->InitStageTwo(
-          params, settingsComponent->GetProfileManager()->GetProfileUserDataFolder()))
+          settingsComponent->GetProfileManager()->GetProfileUserDataFolder()))
   {
     return false;
   }
