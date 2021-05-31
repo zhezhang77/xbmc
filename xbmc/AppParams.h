@@ -12,6 +12,7 @@
 
 #include <memory>
 #include <string>
+#include <vector>
 
 class CFileItemList;
 
@@ -50,6 +51,9 @@ public:
 
   CFileItemList& GetPlaylist() const { return *m_playlist; }
 
+  void SetRawArgs(std::vector<std::string> args);
+  const std::vector<std::string>& GetRawArgs() const { return m_rawArgs; }
+
 private:
   int m_logLevel{LOG_LEVEL_NORMAL};
 
@@ -63,4 +67,6 @@ private:
   std::string m_logTarget;
 
   std::unique_ptr<CFileItemList> m_playlist;
+
+  std::vector<std::string> m_rawArgs;
 };
